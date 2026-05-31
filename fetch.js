@@ -1,4 +1,4 @@
-const url = "../data/menu.json";
+const url = "./data/menu.json";
 
 export default async function getProducts() {
   try {
