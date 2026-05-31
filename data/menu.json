@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "foxy latte",
+    "price": 30000,
+    "category": "coffee"
+  },
+  {
+    "id": 2,
+    "name": "cold brew",
+    "price": 45000,
+    "category": "coffee"
+  },
+  {
+    "id": 3,
+    "name": "crunchy croissant",
+    "price": 15000,
+    "category": "pastry"
+  },
+  {
+    "id": 4,
+    "name": "tiramisu",
+    "price": 60000,
+    "category": "dessert"
+  },
+  {
+    "id": 5,
+    "name": "egg toast",
+    "price": 18000,
+    "category": "breakfast"
+  }
+]
