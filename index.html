@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="menu.css" />
+    <title>Kitsu Coffee</title>
+  </head>
+  <body>
+    <h1>Kitsu Coffee Menu</h1>
+
+    <div class="utility-wrapper">
+      <div class="search-wrapper">
+        <input
+          type="text"
+          placeholder="find your coffee..."
+          id="input"
+          class="search-input"
+          autocomplete="off"
+        />
+        <ul class="suggestions"></ul>
+        <button type="button" id="search-btn" class="search-btn">Search</button>
+      </div>
+      <div class="cta-btn">
+        <button type="button" class="cart-btn">C</button>
+      </div>
+    </div>
+    <div class="main-container">
+      <div class="container" id="menu">
+        <ul class="menu-wrapper"></ul>
+        <div class="cart-wrapper" id="cart">
+          <ul class="cart-list"></ul>
+
+          <div class="cart-summary"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay">
+      <div class="modal">
+        <div class="modal-header">
+          <h2>Review Order</h2>
+        </div>
+        <div class="review-list"></div>
+        <div class="review-summary"></div>
+      </div>
+    </div>
+    <script type="module" src="render.js"></script>
+  </body>
+</html>
