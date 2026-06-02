@@ -1,0 +1,17 @@
+export const body = document.body;
+export const container = document.querySelector(".container");
+export const menuWrapper = document.querySelector(".menu-wrapper");
+export const input = document.querySelector("#input");
+export const completeWrapper = document.querySelector(".complete-wrapper");
+export const autoComplete = document.querySelector(".auto-complete");
+export const cartList = document.querySelector(".cart-list");
+export const cartBtn = document.querySelector(".cart-btn");
+export const searchBtn = document.querySelector(".search-btn");
+export const cartWrapper = document.querySelector(".cart-wrapper");
+export const mainContainer = document.querySelector(".main-container");
+export const cartSummary = document.querySelector(".cart-summary");
+export const cartOverlay = document.querySelector(".cart-overlay");
+export const modalOverlay = document.querySelector(".modal-overlay");
+export const modal = document.querySelector(".modal");
+export const reviewList = document.querySelector(".review-list");
+export const reviewSum = document.querySelector(".review-summary");
