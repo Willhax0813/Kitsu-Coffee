@@ -195,6 +195,10 @@ h1 {
   height: auto;
 }
 
+.cart-list:nth-last-child {
+  border-bottom: none;
+}
+
 .cart-summary {
   display: none;
 }
@@ -225,11 +229,14 @@ h1 {
 
 .item-list {
   border: none;
-  border-bottom: 1px solid #ccc;
   padding: 0.5rem;
   list-style: none;
   white-space: nowrap;
   line-height: 2rem;
+}
+
+.item-list:not(:last-child) {
+  border-bottom: 1px solid #ddd;
 }
 
 .price-counter {
