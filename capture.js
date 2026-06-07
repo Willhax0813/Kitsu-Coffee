@@ -2,6 +2,7 @@ export const body = document.body;
 export const container = document.querySelector(".container");
 export const menuWrapper = document.querySelector(".menu-wrapper");
 export const input = document.querySelector("#input");
+export const searchWrapper = document.querySelector(".search-wrapper");
 export const completeWrapper = document.querySelector(".complete-wrapper");
 export const autoComplete = document.querySelector(".auto-complete");
 export const cartList = document.querySelector(".cart-list");

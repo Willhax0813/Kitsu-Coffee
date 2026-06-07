@@ -3,12 +3,21 @@ import {
   cartWrapper,
   cartOverlay,
   input,
+  searchWrapper,
   searchBtn,
   completeWrapper,
   body,
 } from "./capture.js";
 
-import { searchHandler } from "./search.js";
+import {
+  openSearch,
+  searchHandler,
+  closeSearch,
+  handleSearchBtn,
+} from "./search.js";
+import { renderMenu, renderCart } from "./render.js";
+
+import { products } from "./state.js";
 export function formatPrice(price) {
   return new Intl.NumberFormat("id-ID").format(price);
 }
@@ -24,57 +33,25 @@ export function toggleCart() {
     cartOverlay.classList.toggle("active", isOpen);
   }
 }
+
+cartOverlay.addEventListener("click", (e) => {
+  if (e.target === cartOverlay) {
+    cartWrapper.classList.remove("active");
+    cartOverlay.classList.remove("active");
+  }
+});
+
 export function bindEvents() {
   cartBtn.addEventListener("click", toggleCart);
-  input.addEventListener("input", searchHandler);
+  searchWrapper.addEventListener("input", searchHandler);
 
-  // input.addEventListener("keydown", (e) => {
-  //   if (e.key === "Enter") {
-  //     searchHandler();
-  //   }
-  // });
+  searchBtn.addEventListener("click", handleSearchBtn);
+  // input.addEventListener("input", updateSearchIcon);
+  body.addEventListener("click", closeSearch);
 
-  searchBtn.addEventListener("click", () => {
-    const hasValue = input.value.trim() !== "";
-
-    if (hasValue) {
-      input.value = "";
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
       completeWrapper.classList.remove("active");
-      searchBtn.textContent = "🔍";
-      renderMenu(products);
-      input.focus();
-      return;
-    }
-    input.classList.add("active");
-    searchBtn.classList.toggle("active", hasValue);
-    input.focus();
-  });
-
-  input.addEventListener("input", () => {
-    const hasValue = input.value.trim() !== "";
-
-    searchBtn.textContent = hasValue ? "✖" : "🔍";
-    // searchBtn.classList.toggle("active", hasValue);
-  });
-
-  cartOverlay.addEventListener("click", (e) => {
-    if (e.target === cartOverlay) {
-      cartWrapper.classList.remove("active");
-      cartOverlay.classList.remove("active");
-    }
-  });
-
-  body.addEventListener("click", (e) => {
-    const insideSearch = e.target.closest(".search-wrapper");
-
-    if (!insideSearch) {
-      input.classList.remove("active");
-
-      input.value = "";
-      completeWrapper.classList.remove("active");
-      searchBtn.textContent = "🔍";
-      // searchBtn.style.boxShadow = " 0 0 10px rgba(0,0,0,0.125)";
-      renderMenu(products);
     }
   });
 

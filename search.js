@@ -1,13 +1,23 @@
 import { products } from "./state.js";
-import { completeWrapper } from "./capture.js";
-import { renderMenu } from "./render.js";
+import {
+  completeWrapper,
+  searchBtn,
+  searchWrapper,
+  input,
+  body,
+} from "./capture.js";
+import { renderMenu, renderAutoComplete } from "./render.js";
 
 export function searchHandler(e) {
   const keyword = e.target.value.toLowerCase();
 
+  searchBtn.textContent = keyword ? "✖" : "🔍";
+
   if (!keyword) {
-    completeWrapper.innerHTML = "";
     completeWrapper.classList.remove("active");
+    setTimeout(() => {
+      completeWrapper.innerHTML = "";
+    }, 200);
 
     renderMenu(products);
 
@@ -21,25 +31,40 @@ export function searchHandler(e) {
   renderAutoComplete(filtered);
 }
 
-export function renderAutoComplete(filteredProducts) {
-  completeWrapper.innerHTML = "";
-  if (filteredProducts.length === 0) {
-    completeWrapper.classList.remove("active");
+export function openSearch() {
+  searchWrapper.classList.toggle("active");
+  input.classList.toggle("active");
+  input.focus();
+}
 
+function clearField() {
+  input.value = "";
+  completeWrapper.classList.remove("active");
+  searchBtn.textContent = "🔍";
+  renderMenu(products);
+  input.focus();
+}
+
+export function handleSearchBtn() {
+  if (input.value.trim()) {
+    clearField();
     return;
   }
 
-  completeWrapper.classList.add("active");
+  openSearch();
+}
 
-  const fragment = document.createDocumentFragment();
-  filteredProducts.forEach((product) => {
-    const li = document.createElement("li");
+export function closeSearch(e) {
+  const insideSearch = e.target.closest(".search-wrapper");
 
-    li.classList.add("list-dropdown");
-    li.textContent = product.name;
+  if (!insideSearch) {
+    searchWrapper.classList.remove("active");
+    input.classList.remove("active");
 
-    fragment.appendChild(li);
-  });
-
-  completeWrapper.appendChild(fragment);
+    input.value = "";
+    input.blur();
+    completeWrapper.classList.remove("active");
+    searchBtn.textContent = "🔍";
+    renderMenu(products);
+  }
 }

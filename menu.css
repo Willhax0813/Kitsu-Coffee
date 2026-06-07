@@ -49,55 +49,51 @@ h1 {
   align-items: center;
   gap: 1rem;
 }
-
+/* SEARCH */
 .search-wrapper {
   position: relative;
   display: flex;
-  width: 100%;
-  gap: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  gap: 0.5rem;
+  padding: 1rem 0;
   align-items: center;
   justify-content: flex-end;
+  transition: 0.5s ease;
+  border-radius: 30px;
 }
 
-/* SEARCH */
+.search-wrapper:hover {
+  box-shadow: 8px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.search-wrapper.active {
+  width: 100%;
+  box-shadow: 6px 4px 10px rgba(0, 0, 0, 0.25);
+  padding: 0 0.5rem 0 0;
+}
+
 .search-input {
-  position: absolute;
-  right: 0;
   opacity: 0;
-  visibility: hidden;
-  width: 0;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  transform: translateX(0);
-  transition:
-    transform 0.5s ease,
-    opacity 0.5s ease,
-    width 0.5s ease,
-    visibility 0.5s ease;
   border: none;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.125);
+  outline: none;
+  width: 0;
+  padding: 0.5rem 0;
+  visibility: hidden;
   cursor: text;
+  pointer-events: none;
 }
 
 .search-input.active {
+  width: 85%;
   opacity: 1;
-  width: 100%;
-  height: 2.25rem;
-  padding-right: 75px;
   visibility: visible;
-  transform: translateX(1px);
   pointer-events: auto;
-  /* z-index: 100; */
-}
-
-.search-input:focus {
-  outline: none;
-  box-shadow: 8px 4px 10px rgba(0, 0, 0, 0.25);
 }
 
 .complete-wrapper {
   position: absolute;
-  top: calc(100% + 1rem);
+  top: calc(100% + 0.1rem);
   left: 0;
 
   width: 100%;
@@ -278,12 +274,6 @@ h1 {
 
 /* BUTTONS */
 .search-btn {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 2.25rem;
-  height: 2.25rem;
   border-radius: 50%;
   font-size: 1rem;
   border-left: none;
@@ -293,9 +283,6 @@ h1 {
 
   cursor: pointer;
   transition: 0.3s ease;
-}
-.search-btn:not(.active):hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.125);
 }
 
 .search-btn.active {
@@ -314,27 +301,6 @@ h1 {
   background-color: #ffffff;
   cursor: pointer;
   transition: 0.3s ease;
-}
-
-.clear-btn {
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-
-  transform: translateY(-50%);
-
-  border: none;
-  background: none;
-  cursor: pointer;
-
-  opacity: 0;
-  pointer-events: none;
-  z-index: 999;
-}
-
-.clear-btn.active {
-  opacity: 1;
-  pointer-events: auto;
 }
 
 .cart-btn:hover {
@@ -410,7 +376,7 @@ h1 {
 @media (min-width: 1024px) {
   /* desktop view  */
 
-  .search-input.active {
+  .search-wrapper.active {
     width: clamp(250px, 30vw, 500px);
   }
   .cart-wrapper {
@@ -459,7 +425,7 @@ h1 {
   .complete-wrapper {
     width: clamp(250px, 30vw, 500px);
     right: 5px;
-    top: 1rem;
+    top: calc(100% - 0.1rem);
     left: auto;
   }
 

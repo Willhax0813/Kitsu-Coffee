@@ -12,6 +12,7 @@ import { formatPrice, getConfirmText } from "./ui.js";
 import { openModal, closeModal } from "./modal.js";
 import {
   menuWrapper,
+  completeWrapper,
   cartList,
   cartSummary,
   reviewList,
@@ -51,6 +52,29 @@ export function renderCartList() {
     fragment.appendChild(cartItem);
   });
   cartList.appendChild(fragment);
+}
+
+export function renderAutoComplete(filteredProducts) {
+  completeWrapper.innerHTML = "";
+  if (filteredProducts.length === 0) {
+    completeWrapper.classList.remove("active");
+
+    return;
+  }
+
+  completeWrapper.classList.add("active");
+
+  const fragment = document.createDocumentFragment();
+  filteredProducts.forEach((product) => {
+    const li = document.createElement("li");
+
+    li.classList.add("list-dropdown");
+    li.textContent = product.name;
+
+    fragment.appendChild(li);
+  });
+
+  completeWrapper.appendChild(fragment);
 }
 
 export function renderSummary() {

@@ -28,5 +28,11 @@
     "name": "egg toast",
     "price": 18000,
     "category": "breakfast"
+  },
+  {
+    "id": 6,
+    "name": "Americano",
+    "price": 50000,
+    "category": "coffee"
   }
 ]

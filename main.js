@@ -9,7 +9,6 @@ async function renderProducts() {
   const data = await getProducts();
   products.length = 0;
   products.push(...data);
-  console.log("PRODUCTS:", products);
 
   renderMenu(products);
 }
